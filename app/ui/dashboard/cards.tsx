@@ -1,3 +1,5 @@
+import { fetchCardData } from '@/app/lib/data';
+
 import {
   BanknotesIcon,
   ClockIcon,
@@ -14,18 +16,31 @@ const iconMap = {
 };
 
 export default async function CardWrapper() {
+  /* This code below is equivalent to the code below, reducing the lines of code
+  const cardData = await fetchCardData();
+  
+  const numberOfCustomers = cardData.numberOfCustomers;
+  const numberOfInvoices = cardData.numberOfInvoices;
+  const totalPaidInvoices = cardData.totalPaidInvoices;
+  const totalPendingInvoices = cardData.totalPendingInvoices;
+*/
+  const {
+    numberOfInvoices,
+    numberOfCustomers,
+    totalPaidInvoices,
+    totalPendingInvoices,
+  } = await fetchCardData();
   return (
     <>
-      {/* NOTE: comment in this code when you get to this point in the course */}
-
-      {/* <Card title="Collected" value={totalPaidInvoices} type="collected" />
+      {/* NOTE: I'm here - Chapter 8 */}
+      <Card title="Collected" value={totalPaidInvoices} type="collected" />
       <Card title="Pending" value={totalPendingInvoices} type="pending" />
       <Card title="Total Invoices" value={numberOfInvoices} type="invoices" />
       <Card
         title="Total Customers"
         value={numberOfCustomers}
         type="customers"
-      /> */}
+      />
     </>
   );
 }
