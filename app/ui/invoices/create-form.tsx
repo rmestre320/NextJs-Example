@@ -134,12 +134,9 @@ export default function Form({ customers }: { customers: CustomerField[] }) {
           <div id="overall-error" aria-live="polite" aria-atomic="true">
             {(state.errors?.amount ||
               state.errors?.customerId ||
-              state.errors?.status) &&
-              state.errors.amount?.map((error: string) => (
-                <p className="mt-2 text-sm text-red-500" key={error}>
-                  {error}
-                </p>
-              ))}
+              state.errors?.status) && (
+              <p className="mt-2 text-sm text-red-500">{state.message}</p>
+            )}
           </div>
         </fieldset>
       </div>
